@@ -19,6 +19,9 @@
         <quarkus.platform.version>1.8.3.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     </properties>
+    <modules>
+        <module>cdk</module>
+    </modules>
     <dependencyManagement>
         <dependencies>
             <dependency>
