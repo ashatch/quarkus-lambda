@@ -1,4 +1,4 @@
-package com.myorg;
+package net.andrewhatch.quarkus.cdk;
 
 import software.amazon.awscdk.core.Construct;
 import software.amazon.awscdk.core.Duration;
@@ -12,6 +12,10 @@ import software.amazon.awscdk.services.lambda.Runtime;
 public class CdkStack extends Stack {
 
     public static final String LAMBDA_JAR_PATH = "jarpath";
+
+    public CdkStack(final Construct scope, final String id) {
+        this(scope, id, null);
+    }
 
     public CdkStack(final Construct scope, final String id, final StackProps props) {
         super(scope, id, props);

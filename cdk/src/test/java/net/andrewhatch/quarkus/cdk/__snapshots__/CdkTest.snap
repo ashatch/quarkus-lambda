@@ -1,0 +1,218 @@
+com.myorg.CdkTest.testStack=[
+  {
+    "Parameters": {
+      "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bArtifactHash916FD55F": {
+        "Description": "Artifact hash for asset \"46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0b\"",
+        "Type": "String"
+      },
+      "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3Bucket7C43A93C": {
+        "Description": "S3 bucket for asset \"46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0b\"",
+        "Type": "String"
+      },
+      "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3VersionKey8B1568C2": {
+        "Description": "S3 key for asset version \"46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0b\"",
+        "Type": "String"
+      }
+    },
+    "Resources": {
+      "quarkuslambda8FEF34C5": {
+        "DependsOn": [
+          "quarkuslambdaServiceRole1F38A68C"
+        ],
+        "Properties": {
+          "Code": {
+            "S3Bucket": {
+              "Ref": "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3Bucket7C43A93C"
+            },
+            "S3Key": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      0,
+                      {
+                        "Fn::Split": [
+                          "||",
+                          {
+                            "Ref": "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3VersionKey8B1568C2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Fn::Select": [
+                      1,
+                      {
+                        "Fn::Split": [
+                          "||",
+                          {
+                            "Ref": "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3VersionKey8B1568C2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          },
+          "FunctionName": "dev-quarkus-lambda",
+          "Handler": "test",
+          "MemorySize": 512,
+          "Role": {
+            "Fn::GetAtt": [
+              "quarkuslambdaServiceRole1F38A68C",
+              "Arn"
+            ]
+          },
+          "Runtime": "java8",
+          "Timeout": 20
+        },
+        "Type": "AWS::Lambda::Function"
+      },
+      "quarkuslambdaServiceRole1F38A68C": {
+        "Properties": {
+          "AssumeRolePolicyDocument": {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": "lambda.amazonaws.com"
+                }
+              }
+            ],
+            "Version": "2012-10-17"
+          },
+          "ManagedPolicyArns": [
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition"
+                  },
+                  ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                ]
+              ]
+            }
+          ]
+        },
+        "Type": "AWS::IAM::Role"
+      }
+    }
+  }
+]
+
+
+net.andrewhatch.quarkus.cdk.CdkTest.testStack=[
+  {
+    "Parameters": {
+      "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bArtifactHash916FD55F": {
+        "Description": "Artifact hash for asset \"46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0b\"",
+        "Type": "String"
+      },
+      "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3Bucket7C43A93C": {
+        "Description": "S3 bucket for asset \"46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0b\"",
+        "Type": "String"
+      },
+      "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3VersionKey8B1568C2": {
+        "Description": "S3 key for asset version \"46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0b\"",
+        "Type": "String"
+      }
+    },
+    "Resources": {
+      "quarkuslambda8FEF34C5": {
+        "DependsOn": [
+          "quarkuslambdaServiceRole1F38A68C"
+        ],
+        "Properties": {
+          "Code": {
+            "S3Bucket": {
+              "Ref": "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3Bucket7C43A93C"
+            },
+            "S3Key": {
+              "Fn::Join": [
+                "",
+                [
+                  {
+                    "Fn::Select": [
+                      0,
+                      {
+                        "Fn::Split": [
+                          "||",
+                          {
+                            "Ref": "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3VersionKey8B1568C2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Fn::Select": [
+                      1,
+                      {
+                        "Fn::Split": [
+                          "||",
+                          {
+                            "Ref": "AssetParameters46c0277996190033243e7490c8ab35b0018660b0fd1a060f13e8c65ad635dd0bS3VersionKey8B1568C2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          },
+          "FunctionName": "dev-quarkus-lambda",
+          "Handler": "test",
+          "MemorySize": 512,
+          "Role": {
+            "Fn::GetAtt": [
+              "quarkuslambdaServiceRole1F38A68C",
+              "Arn"
+            ]
+          },
+          "Runtime": "java8",
+          "Timeout": 20
+        },
+        "Type": "AWS::Lambda::Function"
+      },
+      "quarkuslambdaServiceRole1F38A68C": {
+        "Properties": {
+          "AssumeRolePolicyDocument": {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": "lambda.amazonaws.com"
+                }
+              }
+            ],
+            "Version": "2012-10-17"
+          },
+          "ManagedPolicyArns": [
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition"
+                  },
+                  ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                ]
+              ]
+            }
+          ]
+        },
+        "Type": "AWS::IAM::Role"
+      }
+    }
+  }
+]
