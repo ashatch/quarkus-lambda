@@ -25,3 +25,8 @@ invoke:
 		--cli-binary-format raw-in-base64-out \
 		out.log > /dev/null
 	@cat out.log && rm out.log
+
+# list all the targets in this makefile
+.PHONY: list
+list:
+	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
