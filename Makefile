@@ -16,7 +16,7 @@ deploy: lambda/target/function.zip
 
 .PHONY: destroy
 destroy:
-	pushd cdk && cdk destroy
+	pushd cdk && cdk destroy -c jarpath=../lambda/target/function.zip
 
 .PHONY: invoke
 invoke:
