@@ -9,6 +9,8 @@ import software.amazon.awscdk.services.lambda.Function;
 import software.amazon.awscdk.services.lambda.FunctionProps;
 import software.amazon.awscdk.services.lambda.Runtime;
 
+import java.util.Map;
+
 public class CdkStack extends Stack {
 
     public static final String LAMBDA_JAR_PATH = "jarpath";
@@ -29,8 +31,9 @@ public class CdkStack extends Stack {
                 .functionName("dev-quarkus-lambda")
                 .memorySize(512)
                 .timeout(Duration.seconds(20))
-                .runtime(Runtime.JAVA_8)
+                .runtime(Runtime.PROVIDED)
                 .code(quarkusLambdaCode)
+                .environment(Map.of("DISABLE_SIGNAL_HANDLERS", "true"))
                 .handler("test")
                 .build());
     }

@@ -48,11 +48,6 @@
             <artifactId>lambda</artifactId>
             <version>${cdk.version}</version>
         </dependency>
-        <dependency>
-            <groupId>net.andrewhatch.quarkus.lambda</groupId>
-            <artifactId>lambda</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <!-- test deps -->
         <dependency>
